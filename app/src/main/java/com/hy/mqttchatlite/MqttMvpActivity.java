@@ -66,6 +66,7 @@ public class MqttMvpActivity extends AppCompatActivity implements MqttPresenter.
     private Handler mMainHandler;
     private Runnable resetFlagRunnable = () -> isEnsureExit = false;
     private AlertDialog tipDialog;
+    private Toast exitToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -202,7 +203,7 @@ public class MqttMvpActivity extends AppCompatActivity implements MqttPresenter.
         mPresenter.disconnect();
         mPresenter.release();
 
-        Process.killProcess(Process.myPid());
+//        Process.killProcess(Process.myPid());
     }
 
     @Override
@@ -210,8 +211,16 @@ public class MqttMvpActivity extends AppCompatActivity implements MqttPresenter.
         if (!isEnsureExit) {
             isEnsureExit = true;
             mMainHandler.postDelayed(resetFlagRunnable, 1000);
-            Toast.makeText(this, "再次点击返回键退出", Toast.LENGTH_SHORT).show();
+            if (exitToast != null) {
+                exitToast.cancel();
+            }
+            exitToast = Toast.makeText(this, "再次点击返回键退出", Toast.LENGTH_SHORT);
+            exitToast.show();
         } else {
+            if (exitToast != null) {
+                exitToast.cancel();
+                exitToast = null;
+            }
             mMainHandler.removeCallbacks(resetFlagRunnable);
             super.onBackPressed();
         }
