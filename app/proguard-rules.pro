@@ -19,3 +19,5 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+#报错的时候累来源不被混淆。
+-keep class org.eclipse.paho.client.mqttv3.* {*;}

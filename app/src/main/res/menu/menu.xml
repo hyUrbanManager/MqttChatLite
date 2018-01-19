@@ -9,4 +9,7 @@
     <item
         android:id="@+id/errorCode"
         android:title="错误信息列表"/>
+    <item
+        android:id="@+id/tip"
+        android:title="提示"/>
 </menu>

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Mqtt轻聊</string>
+    <string name="operate_tip">
+        点击连接按钮可自动连接灰色字地址。\n
+        连接选项用输入随意用户名才可以连接成功。\n
+        用户名为\"dashboard\"时，订阅主题\"$SYS/#\"可以查看系统运行状态消息。\n
+        出现错误时可对照错误列表查看错误详情。
+    </string>
 </resources>

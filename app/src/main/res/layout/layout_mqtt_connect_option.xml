@@ -15,7 +15,7 @@
 
     <EditText
         android:id="@+id/mEditClientIdText"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/text1"
         android:layout_margin="8dp"
@@ -38,7 +38,7 @@
 
     <EditText
         android:id="@+id/mEditUserText"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/text2"
         android:layout_alignEnd="@+id/mEditClientIdText"
@@ -64,7 +64,7 @@
 
     <EditText
         android:id="@+id/mEditPasswordText"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/text3"
         android:layout_alignLeft="@+id/mEditUserText"

@@ -65,6 +65,7 @@ public class MqttMvpActivity extends AppCompatActivity implements MqttPresenter.
 
     private Handler mMainHandler;
     private Runnable resetFlagRunnable = () -> isEnsureExit = false;
+    private AlertDialog tipDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -180,6 +181,16 @@ public class MqttMvpActivity extends AppCompatActivity implements MqttPresenter.
                         .create();
             }
             errorCodeDialog.show();
+        } else if (item.getItemId() == R.id.tip) {
+            if (tipDialog == null) {
+                tipDialog = new AlertDialog.Builder(this)
+                        .setTitle("提示")
+                        .setMessage(R.string.operate_tip)
+                        .setPositiveButton("我知道了", (dialog, which) -> {
+                        })
+                        .create();
+            }
+            tipDialog.show();
         }
         return super.onOptionsItemSelected(item);
     }
