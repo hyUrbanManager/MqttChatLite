@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="material_large4">112sp</dimen>
+    <dimen name="material_large3">56sp</dimen>
+    <dimen name="material_large2">45sp</dimen>
+    <dimen name="material_large1">34sp</dimen>
+    <dimen name="material_headline">24sp</dimen>
+    <dimen name="material_title">20sp</dimen>
+    <dimen name="material_subhead">16sp</dimen>
+    <dimen name="material_body2">14sp</dimen>
+    <dimen name="material_body1">14sp</dimen>
+    <dimen name="material_caption">12sp</dimen>
+    <dimen name="material_menu">14sp</dimen>
+    <dimen name="material_button">14sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="app_bar_height">180dp</dimen>
+</resources>

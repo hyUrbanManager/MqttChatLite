@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/primary</color>
+    <color name="colorPrimaryDark">@color/primary_dark</color>
+    <color name="colorAccent">@color/accent</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+    <color name="orange">#FF5722</color>
+    <color name="light_orange">#FFCCBC</color>
+
+    <color name="gray">#aaa</color>
+    <color name="background_gray">#e6e6e6</color>
+    <color name="light_gray">#f4f2f2</color>
+
+    <color name="primary">#9C27B0</color>
+    <color name="primary_dark">#7B1FA2</color>
+    <color name="primary_light">#E1BEE7</color>
+    <color name="accent">#FF4081</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>>
+
+    <color name="alpha_black">#a0000000</color>
+
+    <color name="yellow">#ffffff00</color>
+</resources>

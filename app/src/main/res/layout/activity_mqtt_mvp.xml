@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context=".MqttMvpActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/mAppBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <EditText
+        android:id="@+id/mEditAddressText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mAppBarLayout"
+        android:layout_toLeftOf="@+id/mConnectButton"
+        android:layout_toStartOf="@+id/mConnectButton"
+        android:hint="tcp://139.199.170.98:1883"
+        android:inputType="text"
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/material_button"/>
+
+    <Button
+        android:id="@+id/mConnectButton"
+        style="@style/click_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/mAppBarLayout"
+        android:text="连接"
+        android:textSize="@dimen/material_button"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/mEditTopicText"
+        android:layout_below="@+id/mConnectButton"
+        android:background="@drawable/stroke_primary">
+
+        <TextView
+            android:id="@+id/mLog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/material_caption"/>
+    </ScrollView>
+
+    <EditText
+        android:id="@+id/mEditTopicText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mEditMessageText"
+        android:hint="topic主题名字"
+        android:inputType="text"
+        android:text="default topic"
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/material_button"/>
+
+    <EditText
+        android:id="@+id/mEditMessageText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/line1"
+        android:hint="message消息"
+        android:inputType="text"
+        android:text="default message"
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/material_button"/>
+
+
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/mSubscribeTopicButton"
+            style="@style/click_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="订阅主题"
+            android:textSize="@dimen/material_button"/>
+
+        <Button
+            android:id="@+id/mUnSubscribeTopicButton"
+            style="@style/click_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="取消订阅主题"
+            android:textSize="@dimen/material_button"/>
+
+        <Button
+            android:id="@+id/mPublishMessageButton"
+            style="@style/click_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="推送消息"
+            android:textSize="@dimen/material_button"/>
+    </LinearLayout>
+</RelativeLayout>

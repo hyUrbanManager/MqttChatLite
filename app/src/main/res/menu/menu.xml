@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/clear"
+        android:title="清除消息"/>
+    <item
+        android:id="@+id/option"
+        android:title="设置连接选项"/>
+    <item
+        android:id="@+id/errorCode"
+        android:title="错误信息列表"/>
+</menu>
