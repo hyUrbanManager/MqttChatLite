@@ -1,10 +1,11 @@
 package com.hy.mqttchatlite;
 
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Process;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,10 +27,6 @@ import butterknife.ButterKnife;
 
 public class MqttMvpActivity extends AppCompatActivity implements MqttPresenter.View {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.mAppBarLayout)
-    AppBarLayout mAppBarLayout;
     @BindView(R.id.mEditAddressText)
     EditText mEditAddressText;
     @BindView(R.id.mConnectButton)
@@ -64,11 +61,18 @@ public class MqttMvpActivity extends AppCompatActivity implements MqttPresenter.
     private EditText mEditPasswordText;
     private AlertDialog errorCodeDialog;
 
+    private boolean isEnsureExit;
+
+    private Handler mMainHandler;
+    private Runnable resetFlagRunnable = () -> isEnsureExit = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mqtt_mvp);
         ButterKnife.bind(this);
+
+        mMainHandler = new Handler(Looper.getMainLooper());
 
         try {
             mPresenter = PresenterFactory.createMqttPresenter(this, this);
@@ -82,8 +86,7 @@ public class MqttMvpActivity extends AppCompatActivity implements MqttPresenter.
         // 初始化参数。
         MqttPresenter.State state = mPresenter.state();
         option.clientId = state.clientId;
-        toolbar.setTitle(state.clientId);
-        setSupportActionBar(toolbar);
+        setTitle(state.clientId);
 
         // 连接。
         mConnectButton.setOnClickListener((v) -> {
@@ -144,6 +147,7 @@ public class MqttMvpActivity extends AppCompatActivity implements MqttPresenter.
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.clear) {
             mLog.setText("");
+            tip("清除消息成功");
         } else if (item.getItemId() == R.id.option) {
             if (connectionOptionDialog == null) {
                 // 初始化。
@@ -164,7 +168,7 @@ public class MqttMvpActivity extends AppCompatActivity implements MqttPresenter.
 
                         })
                         .setView(dialogLayout)
-                        .setTitle("设置连接选项")
+                        .setTitle("连接选项(客户端id连接后生效)")
                         .create();
             }
             mEditClientIdText.setText(mPresenter.state().clientId);
@@ -185,6 +189,21 @@ public class MqttMvpActivity extends AppCompatActivity implements MqttPresenter.
         super.onDestroy();
 
         mPresenter.disconnect();
+        mPresenter.release();
+
+        Process.killProcess(Process.myPid());
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!isEnsureExit) {
+            isEnsureExit = true;
+            mMainHandler.postDelayed(resetFlagRunnable, 1000);
+            Toast.makeText(this, "再次点击返回键退出", Toast.LENGTH_SHORT).show();
+        } else {
+            mMainHandler.removeCallbacks(resetFlagRunnable);
+            super.onBackPressed();
+        }
     }
 
     private void tip(String s) {
@@ -193,7 +212,7 @@ public class MqttMvpActivity extends AppCompatActivity implements MqttPresenter.
 
     @Override
     public void onStateChanged(MqttPresenter.State state) {
-        toolbar.setTitle(state.clientId);
+        setTitle(state.clientId);
     }
 
     @Override

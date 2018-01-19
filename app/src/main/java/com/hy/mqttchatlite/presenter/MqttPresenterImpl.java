@@ -17,6 +17,7 @@ import org.eclipse.paho.client.mqttv3.MqttAsyncClient;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
@@ -212,6 +213,17 @@ public class MqttPresenterImpl implements MqttPresenter {
         } catch (Exception e) {
             view.onOperateFail("推送消息", e.toString());
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void release() {
+        if (mqttClient != null) {
+            try {
+                mqttClient.close();
+            } catch (MqttException e) {
+                e.printStackTrace();
+            }
         }
     }
 

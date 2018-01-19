@@ -54,6 +54,11 @@ public interface MqttPresenter extends BasePresenter<MqttPresenter.State> {
      */
     void publishMessage(String topic, MqttMessage mqttMessage);
 
+    /**
+     * 释放资源。
+     */
+    void release();
+
     interface View extends BasePresenter.BaseView<State> {
         void onConnected(String serverUrl, boolean isReconnect);
         void onDisconnected(String serverUrl, boolean isFromUser, String reason);

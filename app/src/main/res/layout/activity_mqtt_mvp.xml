@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,26 +9,10 @@
     android:orientation="vertical"
     tools:context=".MqttMvpActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/mAppBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-        </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
-
     <EditText
         android:id="@+id/mEditAddressText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/mAppBarLayout"
         android:layout_toLeftOf="@+id/mConnectButton"
         android:layout_toStartOf="@+id/mConnectButton"
         android:hint="tcp://139.199.170.98:1883"
@@ -44,7 +27,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/mAppBarLayout"
         android:text="连接"
         android:textSize="@dimen/material_button"/>
 
